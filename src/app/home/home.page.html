@@ -16,7 +16,8 @@
   <p>
     {{output}}
   </p>
-  <ion-button (click)="next()">Nächstes Wort</ion-button>
-
+  <div *ngIf="show">
+    <ion-button (click)="next()">Nächstes Wort</ion-button>
+  </div>
   
 </ion-content>

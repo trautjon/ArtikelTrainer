@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   index = 0;
-  
+  show: boolean = false;
   woerter = [
     {wort: "Baum", artikel: "der"},
     {wort: "Sonne", artikel: "die"}
@@ -20,14 +20,17 @@ export class HomePage {
   check(artikel) {
     if (artikel === this.woerter[this.index].artikel) {
       this.output = "richtig";
+      this.show=true;
     } else {
       this.output = "falsch";
+      this.show=false;
     }
   }
 
   next() {
     this.index ++;
     this.output = "";
+    this.show=false;
   }
 
 }
