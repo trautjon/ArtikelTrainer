@@ -9,6 +9,8 @@ export class HomePage {
 
   index = 0;
   show: boolean = false;
+
+    
   woerter = [
     {wort: "Baum", artikel: "der"},
     {wort: "Sonne", artikel: "die"}
