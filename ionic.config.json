@@ -1,0 +1,7 @@
+{
+  "name": "ArtikelTrainer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
