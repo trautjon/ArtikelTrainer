@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ArtikelTrainer<MEng-SimpleBackend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.ArtikelTrainer",
+            "projectName": "MEng-SimpleBackend",
+            "args": ""
+        }
+    ]
+}
