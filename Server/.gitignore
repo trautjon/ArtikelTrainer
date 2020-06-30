@@ -1,0 +1,10 @@
+# Compiled class file
+*.class
+/target
+*.log
+*.jar
+*.war
+.settings
+.project
+.factorypath
+.classpath
