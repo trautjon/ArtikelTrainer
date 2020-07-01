@@ -19,7 +19,6 @@ import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.SetRepository;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.WortRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -62,6 +61,18 @@ public class ArtikelTrainerService {
         return new ResponseEntity<List<Set>>(sets, HttpStatus.OK);
     }
     
-        
+    @GetMapping(value="/user/{userId}/Sets")
+    public ResponseEntity<List<Set>> getSetsCreated(@PathVariable Long userId) {
+        List<Set> setsCreated = setRepository.findSetAssigned(userId);
+        return new ResponseEntity<List<Set>>(setsCreated, HttpStatus.OK);
+    }
+   
+
+    @GetMapping(value="/user/{userId}/SetsFinished")
+    public ResponseEntity<List<Set>> getSetsFinished(@PathVariable Long userId) {
+        List<Set> setsFiniished = setRepository.findSetFinished(userId);
+        return new ResponseEntity<List<Set>>(setsFiniished, HttpStatus.OK);
+    }
+    
     
 }

@@ -10,14 +10,13 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Wort {
+public class UserSets {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String wort;
+    private boolean finished;
     @ManyToOne
-    private Artikel artikel;
+    private Set set;
     @ManyToOne
-    private Set wortSet;
+    private User user;
 }
