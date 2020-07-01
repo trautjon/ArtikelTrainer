@@ -16,9 +16,7 @@ public class Wort {
     private Long id;
 
     private String wort;
-
-    @ManyToOne
-    private Artikel wortArtikel;
+    private String artikel;
     @ManyToOne
     private Set wortSet;
 }
