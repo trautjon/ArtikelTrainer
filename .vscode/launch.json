@@ -9,6 +9,16 @@
             "mainClass": "ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.ArtikelTrainer",
             "projectName": "MEng-SimpleBackend",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ArtikelTrainer<ArtikelTrainer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.ArtikelTrainer",
+            "projectName": "ArtikelTrainer",
+            "args": ""
         }
     ]
 }

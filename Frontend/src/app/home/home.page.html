@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title *ngIf="woerter">
+      {{ woerter[index].wortSet.name }} Set
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <p>
+  <p *ngIf="woerter">
     {{ woerter[index].wort}}
   </p>
   <ion-button (click)="check('der')">Der</ion-button>

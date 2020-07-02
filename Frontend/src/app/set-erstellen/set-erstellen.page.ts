@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Wort } from './wort';
+import { Wort } from '../model/wort';
 
 
 
@@ -10,14 +10,19 @@ import { Wort } from './wort';
 })
 export class SetErstellenPage implements OnInit {
 
-setname: string = "hallo"; 
+setname: string; 
 
-woerter: Wort[] = [{wort: "Haus", artikel:"das"}];
+woerter: Wort[] = [];
 wort: Wort = new Wort();
 
 
   addword(){
     this.woerter.push(this.wort)
+  }
+
+  postSet(){
+    
+    console.log(this.woerter);
   }
 
 
