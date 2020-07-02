@@ -12,13 +12,27 @@ export class SetErstellenPage implements OnInit {
 
 setname: string; 
 
-woerter: Wort[] = [];
+woerter: Wort[] = new Array()
 wort: Wort = new Wort();
 
 
+
   addword(){
-    this.woerter.push(this.wort)
+
+    //Neues Objekt erzwingen, da sonst der Array immer überschrieben wird 
+    let eingabe = { wort: this.wort.wort, artikel: this.wort.artikel };
+    
+    this.woerter.push(eingabe);
+  
+    console.log(this.woerter);
+     
+    // Felder werden gelöscht sobald die neuen Daten im Array sind 
+    this.wort.wort = "";
+    this.wort.artikel = "";
   }
+
+  
+  
 
   postSet(){
     

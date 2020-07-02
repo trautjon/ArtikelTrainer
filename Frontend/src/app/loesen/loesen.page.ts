@@ -3,20 +3,21 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-loesen',
+  templateUrl: 'loesen.page.html',
+  styleUrls: ['loesen.page.scss'],
 })
-export class HomePage implements OnInit {
+export class loesenPage implements OnInit {
 
   //Server Feedback
   /*
   [{"id":5,"wort":"Auto","artikel":{"id":3,"artikel":"das"},"wortSet":{"id":4,"name":"Bewegungsmittel"}},{"id":7,"wort":"Zug","artikel":{"id":1,"artikel":"der"},"wortSet":{"id":4,"name":"Bewegungsmittel"}},{"id":6,"wort":"Flugzeug","artikel":{"id":3,"artikel":"das"},"wortSet":{"id":4,"name":"Bewegungsmittel"}},{"id":8,"wort":"Fahrrad","artikel":{"id":3,"artikel":"das"},"wortSet":{"id":4,"name":"Bewegungsmittel"}}]
   */
 
-
+ 
   index = 0;
   show: boolean = false;
+  finished: boolean;
 
 
   woerter = null;
@@ -27,6 +28,8 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     
+    this.finished = false;
+
     let id = this.activatedRoute.snapshot.paramMap.get("id");
     //console.log(id)
     
@@ -51,9 +54,30 @@ export class HomePage implements OnInit {
   }
 
   next() {
-    this.index++;
-    this.output = "";
-    this.show = false;
+   
+    if (this.index == (this.woerter?.length - 1)){
+      this.finished = true;
+      
+    } else{
+
+      this.index++;
+      this.output = "";
+      this.show = false;
+
+    }
+    
+  }
+
+  end(){
+
+    //TODO POST Befehl "Tag finished setzen"
+    /*
+    let tag = {};
+    this.http.post(this.server + '', tag)
+            .subscribe((data:any) => {
+
+            });
+    */
   }
 
 }

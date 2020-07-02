@@ -9,8 +9,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home/:id',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'loesen/:id',
+    loadChildren: () => import('./loesen/loesen.module').then( m => m.loesenPageModule)
   },
   {
     path: 'profil',
