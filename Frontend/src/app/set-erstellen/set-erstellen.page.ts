@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Wort } from '../model/wort';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -14,6 +15,7 @@ setname: string;
 
 woerter: Wort[] = new Array()
 wort: Wort = new Wort();
+private server:string = "http://localhost:8080";
 
 
 
@@ -36,12 +38,18 @@ wort: Wort = new Wort();
 
   postSet(){
     
+    
+    this.http.post(this.server + '/set/' + this.setname , this.woerter)
+            .subscribe((data:any) => {
+
+            });
+
     console.log(this.woerter);
   }
 
 
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NumericValueAccessor } from '@ionic/angular';
 
 @Component({
   selector: 'app-loesen',
@@ -23,6 +24,7 @@ export class loesenPage implements OnInit {
   woerter = null;
   output = "";
   private server:string = "http://localhost:8080";
+  private setid:any;
 
   constructor(private activatedRoute: ActivatedRoute, private http:HttpClient) { }
 
@@ -30,10 +32,10 @@ export class loesenPage implements OnInit {
     
     this.finished = false;
 
-    let id = this.activatedRoute.snapshot.paramMap.get("id");
+    this.setid = this.activatedRoute.snapshot.paramMap.get("id");
     //console.log(id)
     
-    this.http.get(this.server + '/set/' + id)
+    this.http.get(this.server + '/set/' + this.setid)
       .subscribe((selectedSet: any) => {
         this.woerter = selectedSet;
 
@@ -71,13 +73,13 @@ export class loesenPage implements OnInit {
   end(){
 
     //TODO POST Befehl "Tag finished setzen"
-    /*
+    
     let tag = {};
-    this.http.post(this.server + '', tag)
+    this.http.post(this.server + '/set/' + this.setid + '/finished', tag)
             .subscribe((data:any) => {
 
             });
-    */
+    
   }
 
 }
