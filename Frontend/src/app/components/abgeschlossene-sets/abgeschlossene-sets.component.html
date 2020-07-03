@@ -1,9 +1,6 @@
 <ion-list>
-  <ion-item href="#">
-    <ion-label>Bauernhof</ion-label>
-  </ion-item>
-  <ion-item href="#">
-    <ion-label>Schule</ion-label>
+  <ion-item *ngFor ="let entry of sets">
+        <ion-label [routerLink]="['/loesen',entry.id]">{{entry.name}}</ion-label>
   </ion-item>
 </ion-list>
 
