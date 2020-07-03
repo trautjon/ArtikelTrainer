@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,7 @@ public class ArtikelTrainerService {
     @Autowired
     private SetRepository setRepository;
 
+    @CrossOrigin(origins = "http://localhost:8100") // Um den Cross Origin Fehler zu vermeiden
     @GetMapping(value="/set/{id}")
     public ResponseEntity<List<Wort>> getSet(@PathVariable Long id) {
         List<Wort> woerterVonSet = wortRepository.findByWortSetId(id);
@@ -54,7 +56,7 @@ public class ArtikelTrainerService {
         }
         return new ResponseEntity<List<Wort>>(woerterListe, HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping(value="/showAllSets")
     public ResponseEntity<List<Set>> getAllSets() {
         List<Set> sets = setRepository.findAll();

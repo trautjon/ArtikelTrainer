@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Neues Set "{{setname}}" erstellen</ion-title>
+    <ion-title>Neues Set {{setname}} erstellen</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,10 +26,14 @@
 
   <ion-button (click)="addword()" >Hinzufügen</ion-button>
 
+  <h3>Set Vorschau</h3>
+
+  <h4>{{setname}}</h4>
+
   <ion-list>
     <ion-item *ngFor="let w of woerter">{{ w.artikel + " " + w.wort }}</ion-item>
   </ion-list>
 
 
-  <ion-button [routerLink]="['/profil']">Fertig</ion-button>
+  <ion-button (click) = "postSet()" >Fertig</ion-button> <!--[routerLink]="['/profil']"-->
 </ion-content>
