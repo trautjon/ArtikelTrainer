@@ -9,11 +9,10 @@ import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.model.Set;
 
 public interface SetRepository extends JpaRepository<Set, Long>{
 
-    @Query(value="Select * from Set Join User_Sets on set.id=User_Sets.set_id Join User On User_Sets.user_Id=user.id where user.id =?1 And User_Sets.finished=false", nativeQuery = true)
-	List<Set> findSetAssigned(Long userId);
+    //List<Set> findSetAssigned(Long userId);
 
-	@Query(value="Select * from Set Join User_Sets on set.id=User_Sets.set_id Join User On User_Sets.user_Id=user.id where user.id =?1 And User_Sets.finished=true", nativeQuery = true)
-	List<Set> findSetFinished(Long userId);
+	@Query("Select us From User u JOIN u.sets us where us.finished=false and u.id =?1")
+	List<Set> findFinishedSet(Long userId);
 
     
 } 

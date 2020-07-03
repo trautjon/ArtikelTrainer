@@ -15,7 +15,6 @@ import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.model.Wort;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.ArtikelRepository;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.SetRepository;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.UserRepository;
-import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.UserSetsRepository;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.WortRepository;
 
 @SpringBootApplication
@@ -153,15 +152,15 @@ public class ArtikelTrainer {
             
             UserSets us1= new UserSets();
             us1.setSet(s4);
-            us1.setUser(user1);
             us1.setFinished(false);
-            userSetsRepository.save(us1);
+
 
             UserSets us2= new UserSets();
             us2.setSet(s1);
-            us2.setUser(user1);
             us2.setFinished(true);
-            userSetsRepository.save(us2);
+
+            user1.getSets().add(s1);
+            user1.getSets().add(s3);
             
         };
     }

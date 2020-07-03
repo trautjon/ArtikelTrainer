@@ -63,16 +63,22 @@ public class ArtikelTrainerService {
     
     @GetMapping(value="/user/{userId}/Sets")
     public ResponseEntity<List<Set>> getSetsCreated(@PathVariable Long userId) {
-        List<Set> setsCreated = setRepository.findSetAssigned(userId);
+        List<Set> setsCreated = setRepository.findFinishedSet(userId);
         return new ResponseEntity<List<Set>>(setsCreated, HttpStatus.OK);
     }
    
 
     @GetMapping(value="/user/{userId}/SetsFinished")
     public ResponseEntity<List<Set>> getSetsFinished(@PathVariable Long userId) {
-        List<Set> setsFiniished = setRepository.findSetFinished(userId);
+        List<Set> setsFiniished = setRepository.findFinishedSet(userId);
         return new ResponseEntity<List<Set>>(setsFiniished, HttpStatus.OK);
     }
     
+    /*@PostMapping(value="")
+    public SomeEnityData postMethodName(@RequestBody SomeEnityData entity) {
+        //TODO: process POST request
+        
+        return entity;
+    }*/
     
 }
