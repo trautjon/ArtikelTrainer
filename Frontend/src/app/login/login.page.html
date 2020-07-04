@@ -4,8 +4,15 @@
  <br>
  <br>
  <br>
- <input type="text" position="floating" placeholder="Login">
+ <input type="text" position="floating" placeholder="Login" [(ngModel)]="userName">
  <br>
- <input type="password" position="floating" placeholder="Password">
- <button ion-button class="login" [routerLink]="['/profil']">Login</button>
+ <input type="password" position="floating" placeholder="Password" [(ngModel)]="password">
+ <br>
+ <ion-button (click)="validate()">Login</ion-button>
+ <br>
+ <br>
+ <div *ngIf ="fail">Benutzername oder Passwort falsch</div>
  </ion-content>
+ <p>Benutzername: max</p>
+ <br>
+ <p>Passwort: 1234</p>
