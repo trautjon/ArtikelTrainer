@@ -50,7 +50,12 @@ export class loesenPage implements OnInit {
 
     if (artikel === this.woerter[this.index].artikel) {
       this.output = "richtig";
-      this.show = true;
+      if (this.index == (this.woerter?.length)-1){
+        this.finished = true;
+      } else {
+        this.show = true;
+      }  
+      
     } else {
       this.output = "falsch";
       this.show = false;
@@ -59,16 +64,14 @@ export class loesenPage implements OnInit {
 
   next() {
    
-    if (this.index == (this.woerter?.length - 1)){
-      this.finished = true;
-      
-    } else{
+    
+    
 
       this.index++;
       this.output = "";
       this.show = false;
 
-    }
+
     
   }
 
