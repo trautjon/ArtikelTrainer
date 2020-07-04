@@ -68,5 +68,13 @@ public class ArtikelTrainerService {
         return new ResponseEntity<List<Set>>(setsFiniished, HttpStatus.OK);
     }
     
+    @CrossOrigin(origins = "http://localhost:8100")
+    @PostMapping(value="/set/{id}/finished")
+    public ResponseEntity<Set> getSetsFinished(@PathVariable Long setId) {
+        Set set = setRepository.findById(setId).get();
+        set.setFinished(true);
+        setRepository.save(set);
+        return new ResponseEntity<Set>(set, HttpStatus.OK);
+    }
 
 }
