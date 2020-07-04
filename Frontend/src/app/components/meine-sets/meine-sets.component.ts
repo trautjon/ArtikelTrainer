@@ -23,19 +23,7 @@ export class MeineSetsComponent implements OnInit {
                     console.log(data);
                   });
                 }
-/* selectSet(id:number){
-  
-      
-  this.http.get(this.server +'/set/' + id)
-  .subscribe((selectedSet:Set[]) => {
-    this.selected = selectedSet;
 
-    console.log(selectedSet);
-
-});  
-
-}
-*/  
   ngOnInit() {
     this.getMeineSets();
   }
