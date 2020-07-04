@@ -29,7 +29,7 @@ public class ArtikelTrainerService {
     @Autowired
     private SetRepository setRepository;
 
-    @CrossOrigin(origins = "http://localhost:8100") // Um den Cross Origin Fehler zu vermeiden
+    @CrossOrigin(origins = "http://localhost:8100")
     @PostMapping(value = "/set/{id}")
     public ResponseEntity<Set> getSet(@PathVariable Long id) {
         Set set = setRepository.findById(id).get();
