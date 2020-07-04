@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title *ngIf="woerter">
-      {{ woerter[index].wortSet.name }} Set
+      {{ name }} Set
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,9 +12,9 @@
   <p *ngIf="woerter">
     {{ woerter[index].wort}}
   </p>
-  <ion-button (click)="check('der')">Der</ion-button>
-  <ion-button (click)="check('die')">Die</ion-button>
-  <ion-button (click)="check('das')">Das</ion-button>
+  <ion-button (click)="check('DER')">Der</ion-button>
+  <ion-button (click)="check('DIE')">Die</ion-button>
+  <ion-button (click)="check('DAS')">Das</ion-button>
   <p>
     {{output}}
   </p>
@@ -25,7 +25,7 @@
   
 <div *ngIf = "finished">
 
-  <ion-button (click)="end()" [routerLink]="['/profil']">Beenden</ion-button>
+  <ion-button (click)="end()" >Beenden</ion-button>
 
 </div>
 

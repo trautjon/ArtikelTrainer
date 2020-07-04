@@ -17,7 +17,7 @@ export class MeineSetsComponent implements OnInit {
   public selected:Set[];
 
   getMeineSets(){
-    this.http.get(this.server +'/showAllSets')
+    this.http.get(this.server +'/setsNotFinished')
                   .subscribe((data:Set[]) => {
                     this.sets = data;
                     console.log(data);

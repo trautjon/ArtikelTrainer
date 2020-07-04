@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NumericValueAccessor } from '@ionic/angular';
 
@@ -25,8 +25,9 @@ export class loesenPage implements OnInit {
   output = "";
   private server:string = "http://localhost:8080";
   private setid:any;
+  name = "";
 
-  constructor(private activatedRoute: ActivatedRoute, private http:HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private http:HttpClient,private router: Router) { }
 
   ngOnInit() {
     
@@ -35,9 +36,10 @@ export class loesenPage implements OnInit {
     this.setid = this.activatedRoute.snapshot.paramMap.get("id");
     //console.log(id)
     
-    this.http.get(this.server + '/set/' + this.setid)
+    this.http.post(this.server + '/set/' + this.setid, null)
       .subscribe((selectedSet: any) => {
-        this.woerter = selectedSet;
+        this.woerter = selectedSet.woerter;
+        this.name = selectedSet.name;
 
         console.log(selectedSet);
 
@@ -46,7 +48,7 @@ export class loesenPage implements OnInit {
 
   check(artikel) {
 
-    if (artikel === this.woerter[this.index].artikel.artikel) {
+    if (artikel === this.woerter[this.index].artikel) {
       this.output = "richtig";
       this.show = true;
     } else {
@@ -72,12 +74,14 @@ export class loesenPage implements OnInit {
 
   end(){
 
-    //TODO POST Befehl "Tag finished setzen"
+    
     
     this.http.post(this.server + '/set/' + this.setid + '/finished', null)
-            .subscribe((data:any) => {
-              
-            });
+      .subscribe((finishedSet: any) => {
+
+       
+      });       
+      this.router.navigate(['/profil']) 
     
   }
 
