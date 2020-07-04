@@ -6,7 +6,7 @@ public enum Artikel {
     
     @Override
     public String toString() {
-        return name().toLowerCase();
+        return name().toUpperCase();
     }
 
     

@@ -29,14 +29,19 @@ public class ArtikelTrainerService {
     @Autowired
     private SetRepository setRepository;
 
+    
     @CrossOrigin(origins = "http://localhost:8100")
-    @PostMapping(value = "/set/{id}")
-    public ResponseEntity<Set> getSet(@PathVariable Long id) {
-        Set set = setRepository.findById(id).get();
-        set.setFinished(false);
-        setRepository.save(set);
-        Collections.shuffle(set.getWoerter());
-        return new ResponseEntity<Set>(set, HttpStatus.OK);
+    @GetMapping(value="/setsNotFinished")
+    public ResponseEntity<List<Set>> getSetsNotFinished() {
+        List<Set> setsNotFinished = setRepository.findByFinishedFalse();
+        return new ResponseEntity<List<Set>>(setsNotFinished, HttpStatus.OK);
+    }
+   
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping(value="/setsFinished")
+    public ResponseEntity<List<Set>> getSetsFinished() {
+        List<Set> setsFiniished = setRepository.findByFinishedTrue();
+        return new ResponseEntity<List<Set>>(setsFiniished, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = "http://localhost:8100")
@@ -52,21 +57,17 @@ public class ArtikelTrainerService {
         setRepository.save(newSet);
         return new ResponseEntity<List<Wort>>(newSet.getWoerter(), HttpStatus.OK);
     }
-   
+    
     @CrossOrigin(origins = "http://localhost:8100")
-    @GetMapping(value="/setsNotFinished")
-    public ResponseEntity<List<Set>> getSetsNotFinished() {
-        List<Set> setsNotFinished = setRepository.findByFinishedFalse();
-        return new ResponseEntity<List<Set>>(setsNotFinished, HttpStatus.OK);
+    @PostMapping(value = "/set/{id}")
+    public ResponseEntity<Set> getSet(@PathVariable Long id) {
+        Set set = setRepository.findById(id).get();
+        set.setFinished(false);
+        setRepository.save(set);
+        Collections.shuffle(set.getWoerter());
+        return new ResponseEntity<Set>(set, HttpStatus.OK);
     }
-   
 
-    @CrossOrigin(origins = "http://localhost:8100")
-    @GetMapping(value="/setsFinished")
-    public ResponseEntity<List<Set>> getSetsFinished() {
-        List<Set> setsFiniished = setRepository.findByFinishedTrue();
-        return new ResponseEntity<List<Set>>(setsFiniished, HttpStatus.OK);
-    }
     
     @CrossOrigin(origins = "http://localhost:8100")
     @PostMapping(value="/set/{id}/finished")
