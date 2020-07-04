@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfilPage } from '../profil/profil.page';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,6 @@ export class LoginPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-  login() {
-    this.navCtrl.push(ProfilPage);
-  }
+  }     
+    }
 
-}

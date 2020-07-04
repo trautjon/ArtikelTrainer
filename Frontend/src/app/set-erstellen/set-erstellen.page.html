@@ -8,15 +8,15 @@
 
   <h3>Set Name</h3>
 
-  <ion-input required type="text" [(ngModel)]="setname" ></ion-input>
+  <ion-input required type="text" placeholder="Bitte trage den Namen für dein Set ein." [(ngModel)]="setname" ></ion-input>
 
   <h3>Neues Wort</h3>
   
-  <ion-input required type="text" [(ngModel)]="wort.wort" ></ion-input>
+  <ion-input required type="text" placeholder="Bitte trage dein gewünschtes Wort ein." [(ngModel)]="wort.wort" ></ion-input>
 
   <h3>Passender Artikel</h3>
   
-  <ion-select required cancel-text="Abbrechen" value="artikel" interface="action-sheet" [(ngModel)]="wort.artikel">
+  <ion-select required cancel-text="Abbrechen" value="artikel" interface="action-sheet" placeholder="Klicke hier, um den passenden Artikel für dein Wort auszuwählen." [(ngModel)]="wort.artikel">
         
     <ion-select-option value="DER">Der</ion-select-option>
     <ion-select-option value="DIE">Die</ion-select-option>
@@ -24,16 +24,29 @@
 
   </ion-select>
 
+  <br>
+  
+
   <ion-button (click)="addword()" >Hinzufügen</ion-button>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
 
   <h3>Set Vorschau</h3>
 
   <h4>{{setname}}</h4>
 
   <ion-list>
-    <ion-item *ngFor="let w of woerter">{{ w.artikel + " " + w.wort }}</ion-item>
+    <ion-item lines="none" *ngFor="let w of woerter">{{ w.artikel + " " + w.wort }}</ion-item>
   </ion-list>
+  
 
+<br>
+<br>
+<br>
 
   <ion-button (click) = 'postSet()' >Fertig</ion-button>
 </ion-content>
