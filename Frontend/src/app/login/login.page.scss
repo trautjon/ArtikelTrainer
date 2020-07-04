@@ -1,0 +1,57 @@
+/* Set the color on all ion-button elements */
+/* ion-button {
+    --color: rgb(255, 255, 255);    
+    --background: #00ff00;
+      } */
+  
+  
+      ion-content {
+          
+          background-size: cover;
+          text-align: center;
+          --ion-background-color: #00ccff;
+          /* --ion-background-image: url("/Frontend/src/assets/image/background.jpg"); */
+          --background: none;
+          --background:url('../../assets/image/background.jpg') 0 0/100% 100% no-repeat;
+      }
+      img {
+          margin-top: 30px;
+          width: 120px;
+      }
+      button {
+          -webkit-box-shadow : 0 10px 30px rgba(255, 13, 85, 0.897);
+          box-shadow: 0 10px 30px rgba(8, 12, 214, 0.4);
+          margin: 0px;
+          background-color: rgba(238, 58, 112, 0.897);
+      }
+      .login {
+          margin-top: 10px;
+          text-align: center;
+          border: none;
+          padding: 15px 80px;
+          text-decoration: none;
+          display: inline-block;
+          text-transform: uppercase;
+          font-size: 13px;
+          transition: all 0.3s ease-in-out;
+          width: 85%;
+          height: 35px;
+          color: white;
+      } 
+      input[type=text] , input[type=password] {
+          background-color: #f6f6f6;
+          border: none;
+          color: #535353;
+          padding: 15px 32px;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        transition: all 0.5s ease-in-out;
+        height: 35px;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 10px;
+
+      }
+    

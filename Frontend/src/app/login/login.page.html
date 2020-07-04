@@ -1,11 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+  <img src="../../assets/image/loginlogo.png" alt="loginlogo">
 
-<ion-button [routerLink]="['/profil']">Login</ion-button>
+ <!--  <ion-item>
+   <ion-label position="floating">ID</ion-label>
+   <ion-input type="text" placeholder="Login"></ion-input>
+ </ion-item>
 
-</ion-content>
+ <ion-item>
+   <ion-label position="floating">password</ion-label>
+   <ion-input type="password" placeholder="password"></ion-input>
+ </ion-item> -->
+
+ <br>
+ <br>
+ <br>
+ <input type="text" placeholder="Login">
+ <input type="password" placeholder="Password">
+ <button ion-button class="login" [routerLink]="['/profil']">Login</button>
+ </ion-content>

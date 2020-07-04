@@ -4,6 +4,11 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+/* hinzugefügt */
+import { ProfilPage } from '../app/profil/profil.page';
+import { LoginPage } from '../app/login/login.page';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
