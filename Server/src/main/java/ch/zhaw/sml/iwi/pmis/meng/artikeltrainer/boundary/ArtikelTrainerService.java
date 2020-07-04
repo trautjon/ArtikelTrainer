@@ -30,9 +30,11 @@ public class ArtikelTrainerService {
     private SetRepository setRepository;
 
     @CrossOrigin(origins = "http://localhost:8100") // Um den Cross Origin Fehler zu vermeiden
-    @GetMapping(value = "/set/{id}")
+    @PostMapping(value = "/set/{id}")
     public ResponseEntity<List<Wort>> getSet(@PathVariable Long id) {
         Set set = setRepository.findById(id).get();
+        set.setFinished(false);
+        setRepository.save(set);
         Collections.shuffle(set.getWoerter());
         return new ResponseEntity<List<Wort>>(set.getWoerter(), HttpStatus.OK);
     }
