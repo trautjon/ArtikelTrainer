@@ -15,72 +15,56 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.model.Set;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.model.Wort;
-import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.ArtikelRepository;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.SetRepository;
 import ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.repository.WortRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-
-
-
 
 @Transactional
 @RestController
 public class ArtikelTrainerService {
 
     @Autowired
-    private ArtikelRepository artikelRepository;
-    @Autowired
     private WortRepository wortRepository;
     @Autowired
     private SetRepository setRepository;
 
     @CrossOrigin(origins = "http://localhost:8100") // Um den Cross Origin Fehler zu vermeiden
-    @GetMapping(value="/set/{id}")
+    @GetMapping(value = "/set/{id}")
     public ResponseEntity<List<Wort>> getSet(@PathVariable Long id) {
-        List<Wort> woerterVonSet = wortRepository.findByWortSetId(id);
-        Collections.shuffle(woerterVonSet);
-        return new ResponseEntity<List<Wort>>(woerterVonSet, HttpStatus.OK);
+        Set set = setRepository.findById(id).get();
+        Collections.shuffle(set.getWoerter());
+        return new ResponseEntity<List<Wort>>(set.getWoerter(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @PostMapping(value="/addSet/{setName}")
     public ResponseEntity<List<Wort>> setSet(@PathVariable String setName, @RequestBody List<Wort> woerterListe) {
         Set newSet = new Set();
         newSet.setName(setName);
-        setRepository.save(newSet);
         for (Wort wort : woerterListe) {
             wort.setId(null);
-            wort.setWortSet(newSet);
             wortRepository.save(wort);
+            newSet.getWoerter().add(wort);
         }
-        return new ResponseEntity<List<Wort>>(woerterListe, HttpStatus.OK);
+        setRepository.save(newSet);
+        return new ResponseEntity<List<Wort>>(newSet.getWoerter(), HttpStatus.OK);
     }
+   
     @CrossOrigin(origins = "http://localhost:8100")
-    @GetMapping(value="/showAllSets")
-    public ResponseEntity<List<Set>> getAllSets() {
-        List<Set> sets = setRepository.findAll();
-        return new ResponseEntity<List<Set>>(sets, HttpStatus.OK);
-    }
-    
-    @GetMapping(value="/user/{userId}/Sets")
-    public ResponseEntity<List<Set>> getSetsCreated(@PathVariable Long userId) {
-        List<Set> setsCreated = setRepository.findFinishedSet(userId);
-        return new ResponseEntity<List<Set>>(setsCreated, HttpStatus.OK);
+    @GetMapping(value="/setsNotFinished")
+    public ResponseEntity<List<Set>> getSetsNotFinished() {
+        List<Set> setsNotFinished = setRepository.findByFinishedFalse();
+        return new ResponseEntity<List<Set>>(setsNotFinished, HttpStatus.OK);
     }
    
 
-    @GetMapping(value="/user/{userId}/SetsFinished")
-    public ResponseEntity<List<Set>> getSetsFinished(@PathVariable Long userId) {
-        List<Set> setsFiniished = setRepository.findFinishedSet(userId);
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping(value="/setsFinished")
+    public ResponseEntity<List<Set>> getSetsFinished() {
+        List<Set> setsFiniished = setRepository.findByFinishedTrue();
         return new ResponseEntity<List<Set>>(setsFiniished, HttpStatus.OK);
     }
     
-    /*@PostMapping(value="")
-    public SomeEnityData postMethodName(@RequestBody SomeEnityData entity) {
-        //TODO: process POST request
-        
-        return entity;
-    }*/
-    
+
 }

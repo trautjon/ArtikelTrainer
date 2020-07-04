@@ -20,7 +20,9 @@ public class Set {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private boolean finished;
     @OneToMany
     private List<Wort> woerter;
+
     
 }

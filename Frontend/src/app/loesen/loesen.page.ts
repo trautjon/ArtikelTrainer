@@ -74,10 +74,9 @@ export class loesenPage implements OnInit {
 
     //TODO POST Befehl "Tag finished setzen"
     
-    let tag = {};
-    this.http.post(this.server + '/set/' + this.setid + '/finished', tag)
+    this.http.post(this.server + '/set/' + this.setid + '/finished', null)
             .subscribe((data:any) => {
-
+              
             });
     
   }

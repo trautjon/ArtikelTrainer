@@ -1,20 +1,13 @@
 package ch.zhaw.sml.iwi.pmis.meng.artikeltrainer.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public enum Artikel {
 
-import lombok.Data;
-
-@Entity
-@Data
-public class Artikel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    private String artikel;
+    DER, DIE, DAS;
+    
+    @Override
+    public String toString() {
+        return name().toLowerCase();
+    }
 
     
 }
