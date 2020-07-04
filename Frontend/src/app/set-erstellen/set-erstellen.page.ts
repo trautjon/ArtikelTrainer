@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Wort } from '../model/wort';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ woerter: Wort[] = new Array()
 wort: Wort = new Wort();
 private server:string = "http://localhost:8080";
 
-
+constructor(private http:HttpClient, private router: Router) { }
 
   addword(){
 
@@ -45,11 +46,14 @@ private server:string = "http://localhost:8080";
             });
 
     console.log(this.woerter);
+
+    this.router.navigate(['/profil'])
+
   }
 
 
 
-  constructor(private http:HttpClient) { }
+ 
 
   ngOnInit() {
   }

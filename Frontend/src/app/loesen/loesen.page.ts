@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NumericValueAccessor } from '@ionic/angular';
 
 @Component({
   selector: 'app-loesen',
@@ -29,7 +28,7 @@ export class loesenPage implements OnInit {
     this.finished = false;
 
     this.setid = this.activatedRoute.snapshot.paramMap.get("id");
-    //console.log(id)
+    
     
     this.http.post(this.server + '/set/' + this.setid, null)
       .subscribe((selectedSet: any) => {
