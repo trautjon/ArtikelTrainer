@@ -39,7 +39,7 @@ private server:string = "http://localhost:8080";
   postSet(){
     
     
-    this.http.post(this.server + '/set/' + this.setname , this.woerter)
+    this.http.post(this.server + '/addSet/' + this.setname , this.woerter)
             .subscribe((data:any) => {
 
             });

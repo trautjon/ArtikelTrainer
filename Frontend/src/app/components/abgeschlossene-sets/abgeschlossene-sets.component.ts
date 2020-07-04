@@ -17,8 +17,8 @@ export class AbgeschlosseneSetsComponent implements OnInit {
   public selected:Set[];
 
   getAbgeschlosseneSets(){
-    // TODO auf abgeschlossene Sets anpassen 
-    this.http.get(this.server +'/showAllSets')
+    
+    this.http.get(this.server +'/setsFinished')
                   .subscribe((data:Set[]) => {
                     this.sets = data;
                     console.log(data);
